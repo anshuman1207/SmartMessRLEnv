@@ -1,3 +1,12 @@
+---
+title: SmartMess RLEnv
+emoji: 🐢
+colorFrom: red
+colorTo: purple
+sdk: docker
+pinned: false
+---
+
 # SmartMess RL 🍲
 
 An OpenEnv-compliant Reinforcement Learning environment designed to predict and manage college mess food preparation, minimizing waste while preventing student shortages.
@@ -49,3 +58,5 @@ We have provided a hard-coded heuristic baseline agent (`baseline.py`) that succ
 **Baseline Score (Hard Task):** `0.9691 / 1.0`  
 
 *Can your Large Language Model beat the baseline?*
+
+Check out the configuration reference at https://huggingface.co/docs/hub/spaces-config-reference
