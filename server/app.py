@@ -12,17 +12,17 @@ app = FastAPI(title="SmartMess OpenEnv")
 global_env = SmartMessEnvironment(task_level="hard")
 
 class ResetRequest(BaseModel):
-    task_level: Optional[str] = "hard"
+    task_id: Optional[str] = "hard"
 
 @app.post("/reset")
 def reset(req: ResetRequest = None):
-    level = req.task_level if req else "hard"
+    level = req.task_id if req and req.task_id else "hard"
     global global_env
     global_env = SmartMessEnvironment(task_level=level)
     obs = global_env.reset()
     
     return {
-        "observation": obs.model_dump(),
+        "observation": obs.model_dump(exclude={"reward", "done", "metadata"}),
         "reward": obs.reward.model_dump(),
         "done": obs.done,
         "info": {}
@@ -32,7 +32,7 @@ def reset(req: ResetRequest = None):
 def step(action: SmartMessAction):
     obs = global_env.step(action)
     return {
-        "observation": obs.model_dump(),
+        "observation": obs.model_dump(exclude={"reward", "done", "metadata"}),
         "reward": obs.reward.model_dump(),
         "done": obs.done,
         "info": obs.metadata
