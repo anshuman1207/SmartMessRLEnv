@@ -1,0 +1,25 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual environments
+.venv/
+venv/
+ENV/
+env/
+
+# Environment variables
+.env
+.env.local
+
+# Project specific generated files
+history_metadata.json
+
+# Tooling
+.pytest_cache/
+.coverage
+coverage.xml
+
+# macOS
+.DS_Store

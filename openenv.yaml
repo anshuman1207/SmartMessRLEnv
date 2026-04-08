@@ -1,0 +1,37 @@
+version: "1.0"
+
+metadata:
+  name: "SmartMess"
+  description: "An AI manager that balances college mess food preparation to minimize waste and prevent shortages."
+  author: "SmartMess Team"
+  tags: ["resource-management", "continuous-reward", "operations"]
+
+environment:
+  language: "python"
+  entrypoint: "inference.py"
+  
+  # The 3 tasks we built in Step 6!
+  tasks:
+    - id: "easy"
+      description: "Deterministic weekday/weekend baseline."
+    - id: "medium"
+      description: "Baseline with moderate human unpredictability (noise)."
+    - id: "hard"
+      description: "Complex logic with weather, event modifiers, and heavy noise."
+
+spaces:
+  # This exactly mirrors our SmartMessObservation in models.py
+  observation:
+    type: "Dict"
+    schema:
+      day_of_week: "int"
+      meal_type: "int"
+      menu_type: "int"
+      weather: "int"
+      special_event: "int"
+      
+  # This exactly mirrors our SmartMessAction in models.py
+  action:
+    type: "Dict"
+    schema:
+      meals_to_prepare: "float"
